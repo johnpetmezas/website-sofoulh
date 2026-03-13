@@ -416,7 +416,7 @@ export default function App() {
       </section>
 
       {/* Map Section */}
-      <section className="w-full h-[500px] grayscale invert contrast-125 opacity-50 hover:opacity-100 transition-opacity duration-1000">
+      <section className="w-full h-[500px] opacity-90 hover:opacity-100 transition-opacity duration-1000">
         <iframe
           width="100%"
           height="100%"
@@ -425,7 +425,6 @@ export default function App() {
           marginHeight={0}
           marginWidth={0}
           src="https://maps.google.com/maps?q=%CE%9D%CE%B9%CE%BA.%20%CE%A0%CE%BB%CE%B1%CF%83%CF%84%CE%AE%CF%81%CE%B1%205%2C%20%CE%96%CE%B5%CF%85%CE%B3%CE%BF%CE%BB%CE%B1%CF%84%CE%B5%CE%B9%CF%8C%20200%2001&t=&z=16&ie=UTF8&iwloc=&output=embed"
-          style={{ filter: 'grayscale(1) invert(0.9) contrast(1.2)' }}
         ></iframe>
       </section>
 
