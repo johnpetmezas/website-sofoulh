@@ -13,7 +13,7 @@ const IMAGES = {
   door: "https://images.unsplash.com/photo-1517646288024-aa24d14bc280?auto=format&fit=crop&q=80&w=1200",
   detail: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=1200",
   gallery: [
-    "/kouz1.png",
+    "/trapez8.png",
     "/kouz2.png",
     "/kouz3.png",
     "/kouz4.png",
@@ -35,9 +35,18 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${scrolled ? 'bg-black/80 backdrop-blur-2xl py-6' : 'bg-transparent py-10'}`}>
       <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
-        <a href="/" className="text-xl tracking-[0.4em] font-light uppercase mr-auto">
-          ΣΟΦΟΥΛΗΣ
-        </a>
+        <div className="flex items-center gap-12 mr-auto">
+          <a 
+            href="tel:697059941" 
+            className="text-white/40 hover:text-white transition-all duration-300 cursor-pointer p-2 -ml-2 rounded-full hover:bg-white/5 focus-visible:outline-white"
+            aria-label="Call us"
+          >
+            <Phone size={18} strokeWidth={1.5} />
+          </a>
+          <a href="/" className="text-xl tracking-[0.4em] font-light uppercase hover:text-white transition-colors cursor-pointer focus-visible:outline-white">
+            ΣΟΦΟΥΛΗΣ
+          </a>
+        </div>
         
         <div className="hidden md:flex gap-12 text-[10px] uppercase tracking-[0.3em] font-medium text-white/40 mr-12">
           <a href="#collections" className="hover:text-white transition-colors">Συλλογες</a>
@@ -268,7 +277,7 @@ export default function App() {
                 <span className="text-[9px] uppercase tracking-[0.4em] text-white/60 mb-6 block font-bold">01 / ΕΠΙΠΛΑ ΚΟΥΖΙΝΑΣ & ΣΑΛΟΝΙΟΥ</span>
                 <h2 className="text-4xl font-light mb-8 leading-tight">Συνδυασμός <br />Ποιότητας & Τιμής</h2>
                 <p className="text-white/40 font-light leading-relaxed mb-10">
-                  Χειροποίητες δημιουργίες από υλικά πρώτης ποιότητας, πάντα όμως ακολουθώντας την τάση της εποχής. Σας υποσχόμαστε ένα εξαιρετικό αποτέλεσμα με διαχρονικό και όμορφο, φυσικό δρυ!
+                  Χειροποίητες δημιουργίες από υλικά πρώτης ποιότητας, πάντα όμως ακολουθώντας την τάση της εποχής. Σας υποσχόμαστε ένα εξαιρετικό αποτέλεσμα με διαχρονικό και όμορφο στυλ!
                 </p>
                 <div className="flex gap-4 flex-wrap mb-10">
                    <button 
@@ -368,14 +377,14 @@ export default function App() {
                     <div className="w-px h-10 bg-white/40" />
                     <div>
                       <div className="text-[9px] uppercase tracking-widest text-white/30 mb-1">Ξυλουργειο</div>
-                      <div className="text-sm font-light">Ζευγολατιό Κορινθίας</div>
+                      <div className="text-sm font-light">Νικ. Πλαστήρα 5, Ζευγολατειό</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-6">
                     <div className="w-px h-10 bg-white/40" />
                     <div>
                       <div className="text-[9px] uppercase tracking-widest text-white/30 mb-1">Πληροφοριες & Προσφορες</div>
-                      <div className="text-sm font-light">Σοφούλης Γιάννης</div>
+                      <div className="text-sm font-light">Σοφούλης Γιάννης • <a href="tel:697059941" className="hover:text-white transition-colors">697059941</a></div>
                     </div>
                   </div>
                   <div className="flex items-center gap-6">
@@ -404,6 +413,20 @@ export default function App() {
             </FadeIn>
           </div>
         </div>
+      </section>
+
+      {/* Map Section */}
+      <section className="w-full h-[500px] grayscale invert contrast-125 opacity-50 hover:opacity-100 transition-opacity duration-1000">
+        <iframe
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          scrolling="no"
+          marginHeight={0}
+          marginWidth={0}
+          src="https://maps.google.com/maps?q=%CE%9D%CE%B9%CE%BA.%20%CE%A0%CE%BB%CE%B1%CF%83%CF%84%CE%AE%CF%81%CE%B1%205%2C%20%CE%96%CE%B5%CF%85%CE%B3%CE%BF%CE%BB%CE%B1%CF%84%CE%B5%CE%B9%CF%8C%20200%2001&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          style={{ filter: 'grayscale(1) invert(0.9) contrast(1.2)' }}
+        ></iframe>
       </section>
 
       {/* Footer - Ultra Minimal */}
