@@ -210,8 +210,8 @@ export default function App() {
             </span>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <h1 className="text-4xl md:text-[8rem] font-serif font-light tracking-tighter leading-none mb-8 md:mb-12 uppercase">
-              Ξυλουργικες <br /><span className="italic font-light normal-case">Δημιουργίες</span>
+            <h1 className="text-5xl md:text-[9rem] font-display font-black tracking-[-0.05em] leading-[0.9] mb-8 md:mb-12 uppercase">
+              Ξυλουργικες <br /><span className="font-light opacity-80">Δημιουργίες</span>
             </h1>
           </FadeIn>
           <FadeIn delay={0.4}>
@@ -244,7 +244,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-32">
             <FadeIn>
-              <h2 className="text-4xl md:text-6xl font-light mb-6 tracking-tighter">Οι Συλλογές μας</h2>
+              <h2 className="text-4xl md:text-7xl font-display font-bold mb-6 tracking-tighter uppercase">Οι Συλλογές μας</h2>
               <p className="text-white/40 font-light max-w-2xl mx-auto">
                 Αναλαμβάνουμε να 'ντύσουμε' το σπίτι σας με υλικά Α' ποιότητας. 
                 Έπιπλα Κουζίνας, Ντουλάπες, Πόρτες Εσωτερικού & Εξωτερικού Χώρου, Πέργολες, Σκεπές και Χαγιάτια.
@@ -328,8 +328,8 @@ export default function App() {
       <section id="philosophy" className="py-24 md:py-40 bg-[#050505] relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-6 md:px-8 text-center relative z-10">
           <FadeIn>
-            <h2 className="text-3xl md:text-7xl font-extralight tracking-tighter mb-12 md:mb-16 uppercase">
-              Ζουμε για να <span className="italic normal-case">Δημιουργούμε</span>
+            <h2 className="text-4xl md:text-8xl font-display font-black tracking-tighter mb-12 md:mb-16 uppercase">
+              Ζουμε για να <span className="font-light opacity-60">Δημιουργούμε</span>
             </h2>
             <p className="text-lg text-white/50 font-light leading-relaxed max-w-2xl mx-auto mb-20 italic">
               "Στόχος μας η ποιότητα και η αντοχή των κατασκευών μας στο χρόνο. <br/> Κύριο μέλημά μας, το χαμόγελό σας!"
