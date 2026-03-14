@@ -210,10 +210,10 @@ export default function App() {
             </span>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <h1 className="text-4xl md:text-[8rem] font-serif font-light tracking-tighter leading-none mb-8 md:mb-12 uppercase">
-              Ξυλουργείο <br /><span className="italic font-light normal-case">Σοφούλης</span>
+            <h1 className="text-4xl md:text-6xl font-outfit font-light tracking-[0.2em] leading-tight mb-8 md:mb-12 uppercase">
+              Ξυλουργικές <br />Δημιουργίες
             </h1>
-            <h2 className="sr-only">Ξυλουργικές Εργασίες & Χειροποίητα Έπιπλα στο Ζευγολατιό</h2>
+            <h2 className="sr-only">Ξυλουργείο Σοφούλης - Ξυλουργικές Εργασίες & Χειροποίητα Έπιπλα στο Ζευγολατιό</h2>
           </FadeIn>
           <FadeIn delay={0.4}>
             <div className="flex justify-center flex-col items-center gap-8">
