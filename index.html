@@ -1,12 +1,54 @@
 <!doctype html>
-<html lang="en">
+<html lang="el">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
+    <title>Ξυλουργείο Σοφούλης | Ξυλουργικές Εργασίες & Έπιπλα στο Ζευγολατιό</title>
+    <meta name="description" content="Ξυλουργείο Σοφούλης στο Ζευγολατιό Κορινθίας. Χειροποίητα έπιπλα, κουζίνες, ντουλάπες και ειδικές ξυλουργικές κατασκευές από το 1975. Ζητήστε προσφορά!" />
+    
+    <!-- Canonical Tag -->
+    <link rel="canonical" href="https://website-sofoulh.vercel.app/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://website-sofoulh.vercel.app/" />
+    <meta property="og:title" content="Ξυλουργείο Σοφούλης | Ξυλουργικές Εργασίες στο Ζευγολατιό" />
+    <meta property="og:description" content="Χειροποίητες δημιουργίες και έπιπλα υψηλής ποιότητας στο Ζευγολατιό Κορινθίας." />
+    <meta property="og:image" content="https://website-sofoulh.vercel.app/kouzina%20hero.png" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Ξυλουργείο Σοφούλης",
+      "url": "https://website-sofoulh.vercel.app",
+      "telephone": "+30697059941",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Νικ. Πλαστήρα 5",
+        "addressLocality": "Ζευγολατειό",
+        "addressRegion": "Κορινθία",
+        "postalCode": "20001",
+        "addressCountry": "GR"
+      },
+      "openingHours": "Mo-Fr 08:00-17:00",
+      "description": "Ξυλουργικές εργασίες, κατασκευή επίπλων, κουζίνες και ντουλάπες στο Ζευγολατιό Κορινθίας.",
+      "image": "https://website-sofoulh.vercel.app/kouzina%20hero.png",
+      "priceRange": "€€"
+    }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Static Fallback for Crawlers -->
+      <div style="display:none">
+        <h1>Ξυλουργείο Σοφούλης - Ζευγολατιό</h1>
+        <h2>Ξυλουργικές Εργασίες, Χειροποίητα Έπιπλα, Κουζίνες & Ντουλάπες</h2>
+        <p>Η επιχείρησή μας δραστηριοποιείται στον χώρο από το 1975 στο Ζευγολατιό Κορινθίας. Προσφέρουμε ποιότητα και αντοχή στις κατασκευές μας.</p>
+        <p>Τηλέφωνο: 697059941 | Διεύθυνση: Νικ. Πλαστήρα 5, Ζευγολατειό</p>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

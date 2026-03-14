@@ -130,7 +130,7 @@ const GalleryModal = ({ isOpen, onClose, images }: { isOpen: boolean, onClose: (
               >
                 <img 
                   src={src} 
-                  alt={`Gallery Image ${idx + 1}`} 
+                  alt={`Ξυλουργική κατασκευή Σοφούλης - Δημιουργία ${idx + 1}`} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800";
@@ -196,7 +196,7 @@ export default function App() {
         >
           <img 
             src={IMAGES.hero} 
-            alt="Interior Woodworking" 
+            alt="Ξυλουργείο Σοφούλης - Χειροποίητες Ξυλουργικές Δημιουργίες στο Ζευγολατιό" 
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
@@ -210,9 +210,10 @@ export default function App() {
             </span>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <h1 className="text-5xl md:text-[9rem] font-display font-black tracking-[-0.05em] leading-[0.9] mb-8 md:mb-12 uppercase">
-              Ξυλουργικες <br /><span className="font-light opacity-80">Δημιουργίες</span>
+            <h1 className="text-4xl md:text-[8rem] font-serif font-light tracking-tighter leading-none mb-8 md:mb-12 uppercase">
+              Ξυλουργείο <br /><span className="italic font-light normal-case">Σοφούλης</span>
             </h1>
+            <h2 className="sr-only">Ξυλουργικές Εργασίες & Χειροποίητα Έπιπλα στο Ζευγολατιό</h2>
           </FadeIn>
           <FadeIn delay={0.4}>
             <div className="flex justify-center flex-col items-center gap-8">
@@ -244,7 +245,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-32">
             <FadeIn>
-              <h2 className="text-4xl md:text-7xl font-display font-bold mb-6 tracking-tighter uppercase">Οι Συλλογές μας</h2>
+              <h2 className="text-4xl md:text-6xl font-light mb-6 tracking-tighter">Οι Συλλογές μας</h2>
               <p className="text-white/40 font-light max-w-2xl mx-auto">
                 Αναλαμβάνουμε να 'ντύσουμε' το σπίτι σας με υλικά Α' ποιότητας. 
                 Έπιπλα Κουζίνας, Ντουλάπες, Πόρτες Εσωτερικού & Εξωτερικού Χώρου, Πέργολες, Σκεπές και Χαγιάτια.
@@ -260,7 +261,7 @@ export default function App() {
               >
                 <img 
                   src={IMAGES.kitchen} 
-                  alt="Σύνθεση Κουζίνας" 
+                  alt="Σχεδιασμός και Κατασκευή Κουζίνας - Ξυλουργείο Σοφούλης" 
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale-[20%]"
                   referrerPolicy="no-referrer"
                 />
@@ -300,7 +301,7 @@ export default function App() {
                 <div className="aspect-[4/5] overflow-hidden bg-[#111]">
                   <img 
                     src={IMAGES.wardrobe} 
-                    alt="Συρόμενες Ντουλάπες" 
+                    alt="Χειροποίητες Συρόμενες Ντουλάπες & Έπιπλα Υπνοδωματίου" 
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000 grayscale-[20%]"
                     referrerPolicy="no-referrer"
                   />
@@ -328,8 +329,8 @@ export default function App() {
       <section id="philosophy" className="py-24 md:py-40 bg-[#050505] relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-6 md:px-8 text-center relative z-10">
           <FadeIn>
-            <h2 className="text-4xl md:text-8xl font-display font-black tracking-tighter mb-12 md:mb-16 uppercase">
-              Ζουμε για να <span className="font-light opacity-60">Δημιουργούμε</span>
+            <h2 className="text-3xl md:text-7xl font-extralight tracking-tighter mb-12 md:mb-16 uppercase">
+              Ζουμε για να <span className="italic normal-case">Δημιουργούμε</span>
             </h2>
             <p className="text-lg text-white/50 font-light leading-relaxed max-w-2xl mx-auto mb-20 italic">
               "Στόχος μας η ποιότητα και η αντοχή των κατασκευών μας στο χρόνο. <br/> Κύριο μέλημά μας, το χαμόγελό σας!"
