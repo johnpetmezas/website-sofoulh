@@ -9,7 +9,7 @@ import {
 const IMAGES = {
   hero: "/kouzina hero.png", 
   kitchen: "/kouz2.png",
-  wardrobe: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=1200",
+  wardrobe: "/doul2.png",
   door: "https://images.unsplash.com/photo-1517646288024-aa24d14bc280?auto=format&fit=crop&q=80&w=1200",
   detail: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=1200",
   gallery: [
