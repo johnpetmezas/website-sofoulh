@@ -175,7 +175,7 @@ export default function App() {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Navbar />
       <GalleryModal 
         isOpen={isGalleryOpen} 
@@ -203,14 +203,14 @@ export default function App() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" />
         </motion.div>
 
-        <div className="relative z-10 text-center px-8">
+        <div className="relative z-10 text-center px-4 md:px-8">
           <FadeIn>
             <span className="text-[10px] uppercase tracking-[0.6em] text-white/40 mb-8 block">
               Ζευγολατιο, Κορινθιας • Απο το 1975
             </span>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <h1 className="text-5xl md:text-[8rem] font-serif font-light tracking-tighter leading-none mb-12 uppercase">
+            <h1 className="text-4xl md:text-[8rem] font-serif font-light tracking-tighter leading-none mb-8 md:mb-12 uppercase">
               Ξυλουργικες <br /><span className="italic font-light normal-case">Δημιουργίες</span>
             </h1>
           </FadeIn>
@@ -240,7 +240,7 @@ export default function App() {
       </section>
 
       {/* Collections - Clean Split Layout */}
-      <section id="collections" className="py-40 px-8">
+      <section id="collections" className="py-24 md:py-40 px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-32">
             <FadeIn>
@@ -252,7 +252,7 @@ export default function App() {
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center mb-40">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center mb-32 md:mb-40">
             <FadeIn>
               <div 
                 className="aspect-[4/5] overflow-hidden bg-[#111] cursor-pointer group relative"
@@ -294,7 +294,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center flex-row-reverse">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center flex-row-reverse">
             <div className="lg:order-2">
               <FadeIn>
                 <div className="aspect-[4/5] overflow-hidden bg-[#111]">
@@ -325,10 +325,10 @@ export default function App() {
       </section>
 
       {/* Philosophy - Immersive & Smooth */}
-      <section id="philosophy" className="py-40 bg-[#050505] relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-8 text-center relative z-10">
+      <section id="philosophy" className="py-24 md:py-40 bg-[#050505] relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6 md:px-8 text-center relative z-10">
           <FadeIn>
-            <h2 className="text-4xl md:text-7xl font-extralight tracking-tighter mb-16 uppercase">
+            <h2 className="text-3xl md:text-7xl font-extralight tracking-tighter mb-12 md:mb-16 uppercase">
               Ζουμε για να <span className="italic normal-case">Δημιουργούμε</span>
             </h2>
             <p className="text-lg text-white/50 font-light leading-relaxed max-w-2xl mx-auto mb-20 italic">
@@ -366,9 +366,9 @@ export default function App() {
       </section>
 
       {/* Contact - Clean & Minimal */}
-      <section id="contact" className="py-40 px-8 bg-[#0a0a0a]">
+      <section id="contact" className="py-24 md:py-40 px-6 md:px-8 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32">
             <div>
               <FadeIn>
                 <h2 className="text-5xl font-light tracking-tighter mb-12 uppercase">Επικοινωνηστε <br />Μαζί Μας</h2>
