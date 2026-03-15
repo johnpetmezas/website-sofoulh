@@ -9,7 +9,7 @@
 }
 
 body {
-  @apply bg-[#000000] text-white font-sans antialiased text-[1.1rem] leading-relaxed;
+  @apply bg-[#000000] text-white font-sans antialiased text-[1.2rem] leading-relaxed;
 }
 
 /* Smooth Glass */

@@ -8,12 +8,13 @@ import {
 
 const IMAGES = {
   hero: "/kouzina hero.png",
-  kitchen: "/kouz3.png",
+  kitchen: "/kouz2.png",
   wardrobe: "/doul2.png",
   door: "https://images.unsplash.com/photo-1517646288024-aa24d14bc280?auto=format&fit=crop&q=80&w=1200",
   detail: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=1200",
   gallery: [
     "/trapez8.png",
+    "/kouz2.png",
     "/kouz3.png",
     "/kouz4.png",
     "/kouz5.png",
@@ -217,7 +218,7 @@ export default function App() {
           </FadeIn>
           <FadeIn delay={0.4}>
             <div className="flex justify-center flex-col items-center gap-8">
-              <p className="max-w-xl text-base md:text-lg font-light text-white/60 mb-4">
+              <p className="max-w-xl text-lg md:text-xl font-light text-white/60 mb-4">
                 Εκπληκτική δουλειά για απαιτητικούς πελάτες. Ειδικές κατασκευές για πελάτες με φαντασία και άποψη.
               </p>
               <button className="group flex flex-col items-center gap-4">
@@ -246,7 +247,7 @@ export default function App() {
           <div className="text-center mb-32">
             <FadeIn>
               <h2 className="text-4xl md:text-6xl font-light mb-6 tracking-tighter">Οι Συλλογές μας</h2>
-              <p className="text-white/40 font-light max-w-2xl mx-auto text-lg">
+              <p className="text-white/40 font-light max-w-2xl mx-auto text-xl">
                 Αναλαμβάνουμε να 'ντύσουμε' το σπίτι σας με υλικά Α' ποιότητας.
                 Έπιπλα Κουζίνας, Ντουλάπες, Πόρτες Εσωτερικού & Εξωτερικού Χώρου, Πέργολες, Σκεπές και Χαγιάτια.
               </p>
@@ -281,7 +282,7 @@ export default function App() {
                 <h2 className="text-4xl font-light mb-8 leading-tight">Συνδυασμός <br />Ποιότητας & Τιμής</h2>
               </FadeIn>
               <FadeIn delay={0.6}>
-                <p className="text-white/40 font-light leading-relaxed mb-10 text-lg">
+                <p className="text-white/40 font-light leading-relaxed mb-10 text-xl">
                   Χειροποίητες δημιουργίες από υλικά πρώτης ποιότητας, πάντα όμως ακολουθώντας την τάση της εποχής. Σας υποσχόμαστε ένα εξαιρετικό αποτέλεσμα με διαχρονικό και όμορφο στυλ!
                 </p>
               </FadeIn>
@@ -322,7 +323,7 @@ export default function App() {
                 <h2 className="text-4xl font-light mb-8 leading-tight">Ντουλάπες <br />Συρόμενες</h2>
               </FadeIn>
               <FadeIn delay={0.6}>
-                <p className="text-white/40 font-light leading-relaxed mb-10 text-lg">
+                <p className="text-white/40 font-light leading-relaxed mb-10 text-xl">
                   Για να ξεκουράσουμε το χώρο σας, τον διάδρομο, το ελλειπτικό και το στατικό ποδήλατο. Πρακτικές και κομψές λύσεις εξοικονόμησης χώρου για το υπνοδωμάτιο σας.
                 </p>
               </FadeIn>
@@ -416,7 +417,7 @@ export default function App() {
             <FadeIn delay={0.2}>
               <div className="space-y-12">
                 <h3 className="text-2xl font-light mb-8">Για Πελάτες με Φαντασία & Άποψη!</h3>
-                <p className="text-white/40 font-light leading-relaxed text-lg">
+                <p className="text-white/40 font-light leading-relaxed text-xl">
                   Επικοινωνήστε μαζί μας για να συζητήσουμε τις ειδικές κατασκευές σας, είτε για το σπίτι, είτε για την επιχείρησή σας. Οι δημιουργίες μας απευθύνονται σε πελάτες με έντονο ταπεραμέντο και σε ανθρώπους που εκτιμούν την τέχνη του φυσικού ξύλου.
                 </p>
                 <a href="https://www.facebook.com/profile.php?id=100091321404145" target="_blank" rel="noreferrer" className="inline-block text-[10px] uppercase tracking-[0.5em] font-bold border border-white/20 px-12 py-5 hover:bg-white hover:text-black transition-all mt-8">
