@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Menu, X, ChevronRight, ArrowRight, 
-  Plus, Minus, ArrowUpRight, 
-  Mail, MapPin, Phone 
+import {
+  Menu, X, ChevronRight, ArrowRight,
+  Plus, Minus, ArrowUpRight,
+  Mail, MapPin, Phone
 } from 'lucide-react';
 
 const IMAGES = {
-  hero: "/kouzina hero.png", 
-  kitchen: "/kouz2.png",
+  hero: "/kouzina hero.png",
+  kitchen: "/kouz3.png",
   wardrobe: "/doul2.png",
   door: "https://images.unsplash.com/photo-1517646288024-aa24d14bc280?auto=format&fit=crop&q=80&w=1200",
   detail: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=1200",
   gallery: [
     "/trapez8.png",
-    "/kouz2.png",
     "/kouz3.png",
     "/kouz4.png",
     "/kouz5.png",
     "/kouz6.png",
     "/kouz7.png",
-    "/doul2.png",
   ]
 };
 
@@ -38,8 +36,8 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${scrolled ? 'bg-black/80 backdrop-blur-2xl py-6' : 'bg-transparent py-10'}`}>
       <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
         <div className="flex items-center gap-12 mr-auto">
-          <a 
-            href="tel:697059941" 
+          <a
+            href="tel:697059941"
             className="text-white/40 hover:text-white transition-all duration-300 cursor-pointer p-2 -ml-2 rounded-full hover:bg-white/5 focus-visible:outline-white"
             aria-label="Call us"
           >
@@ -49,7 +47,7 @@ const Navbar = () => {
             ΣΟΦΟΥΛΗΣ
           </a>
         </div>
-        
+
         <div className="hidden md:flex gap-12 text-[10px] uppercase tracking-[0.3em] font-medium text-white/40 mr-12">
           <a href="#collections" className="hover:text-white transition-colors">Συλλογες</a>
           <a href="#philosophy" className="hover:text-white transition-colors">Φιλοσοφια</a>
@@ -107,14 +105,14 @@ const GalleryModal = ({ isOpen, onClose, images }: { isOpen: boolean, onClose: (
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-8 md:p-20 shadow-2xl"
         >
-          <button 
+          <button
             onClick={onClose}
             className="absolute top-8 right-8 text-white/40 hover:text-white transition-colors z-[110]"
           >
             <X size={40} strokeWidth={1} />
           </button>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
@@ -130,9 +128,9 @@ const GalleryModal = ({ isOpen, onClose, images }: { isOpen: boolean, onClose: (
                 className="aspect-square overflow-hidden bg-white/5 group relative cursor-pointer"
                 onClick={() => setSelectedImage(src)}
               >
-                <img 
-                  src={src} 
-                  alt={`Ξυλουργική κατασκευή Σοφούλης - Δημιουργία ${idx + 1}`} 
+                <img
+                  src={src}
+                  alt={`Ξυλουργική κατασκευή Σοφούλης - Δημιουργία ${idx + 1}`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800";
@@ -155,9 +153,9 @@ const GalleryModal = ({ isOpen, onClose, images }: { isOpen: boolean, onClose: (
                 onClick={() => setSelectedImage(null)}
               >
                 <div className="relative max-w-5xl max-h-full">
-                   <img 
-                    src={selectedImage} 
-                    alt="Enlarged" 
+                  <img
+                    src={selectedImage}
+                    alt="Enlarged"
                     className="w-full h-full object-contain shadow-[0_0_100px_rgba(255,255,255,0.1)]"
                   />
                   <button className="absolute top-4 right-4 text-white/60 hover:text-white">
@@ -179,10 +177,10 @@ export default function App() {
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Navbar />
-      <GalleryModal 
-        isOpen={isGalleryOpen} 
-        onClose={() => setIsGalleryOpen(false)} 
-        images={IMAGES.gallery} 
+      <GalleryModal
+        isOpen={isGalleryOpen}
+        onClose={() => setIsGalleryOpen(false)}
+        images={IMAGES.gallery}
       />
 
       {/* Hero - Minimalist & Smooth */}
@@ -190,15 +188,15 @@ export default function App() {
         {/* Top LED Accent */}
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent z-20 shadow-[0_0_20px_rgba(255,255,255,0.3)]" />
 
-        <motion.div 
+        <motion.div
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.6 }}
           transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0 z-0"
         >
-          <img 
-            src={IMAGES.hero} 
-            alt="Ξυλουργείο Σοφούλης - Χειροποίητες Ξυλουργικές Δημιουργίες στο Ζευγολατιό" 
+          <img
+            src={IMAGES.hero}
+            alt="Ξυλουργείο Σοφούλης - Χειροποίητες Ξυλουργικές Δημιουργίες στο Ζευγολατιό"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
@@ -227,7 +225,7 @@ export default function App() {
                   Ανακαλυψτε
                 </span>
                 <div className="w-px h-16 bg-white/20 relative overflow-hidden">
-                  <motion.div 
+                  <motion.div
                     animate={{ y: [0, 64] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute top-0 left-0 w-full h-8 bg-white"
@@ -249,7 +247,7 @@ export default function App() {
             <FadeIn>
               <h2 className="text-4xl md:text-6xl font-light mb-6 tracking-tighter">Οι Συλλογές μας</h2>
               <p className="text-white/40 font-light max-w-2xl mx-auto text-lg">
-                Αναλαμβάνουμε να 'ντύσουμε' το σπίτι σας με υλικά Α' ποιότητας. 
+                Αναλαμβάνουμε να 'ντύσουμε' το σπίτι σας με υλικά Α' ποιότητας.
                 Έπιπλα Κουζίνας, Ντουλάπες, Πόρτες Εσωτερικού & Εξωτερικού Χώρου, Πέργολες, Σκεπές και Χαγιάτια.
               </p>
             </FadeIn>
@@ -257,21 +255,21 @@ export default function App() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center mb-32 md:mb-40">
             <FadeIn>
-              <div 
+              <div
                 className="aspect-[4/5] overflow-hidden bg-[#111] cursor-pointer group relative"
                 onClick={() => setIsGalleryOpen(true)}
               >
-                <img 
-                  src={IMAGES.kitchen} 
-                  alt="Σχεδιασμός και Κατασκευή Κουζίνας - Ξυλουργείο Σοφούλης" 
+                <img
+                  src={IMAGES.kitchen}
+                  alt="Σχεδιασμός και Κατασκευή Κουζίνας - Ξυλουργείο Σοφούλης"
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale-[20%]"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                   <div className="flex flex-col items-center gap-4">
-                      <Plus size={32} strokeWidth={1} className="text-white" />
-                      <span className="text-[10px] uppercase tracking-[0.4em]">Προβολη Gallery</span>
-                   </div>
+                  <div className="flex flex-col items-center gap-4">
+                    <Plus size={32} strokeWidth={1} className="text-white" />
+                    <span className="text-[10px] uppercase tracking-[0.4em]">Προβολη Gallery</span>
+                  </div>
                 </div>
               </div>
             </FadeIn>
@@ -283,15 +281,15 @@ export default function App() {
                   Χειροποίητες δημιουργίες από υλικά πρώτης ποιότητας, πάντα όμως ακολουθώντας την τάση της εποχής. Σας υποσχόμαστε ένα εξαιρετικό αποτέλεσμα με διαχρονικό και όμορφο στυλ!
                 </p>
                 <div className="flex gap-4 flex-wrap mb-10">
-                   <button 
-                     onClick={() => setIsGalleryOpen(true)}
-                     className="flex items-center gap-4 text-[10px] uppercase tracking-[0.4em] font-bold group border border-white/20 px-6 py-3 hover:bg-white hover:text-black transition-all"
-                   >
-                     Δειτε τις Κουζινες <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                   </button>
-                   <div className="w-full h-px bg-white/5 my-4" />
-                   <span className="text-[10px] uppercase border border-white/20 px-4 py-2 rounded-full text-white/60">ΈπιπλοΣυνθέσεις</span>
-                   <span className="text-[10px] uppercase border border-white/20 px-4 py-2 rounded-full text-white/60">Σαλόνια Α' Ποιότητας</span>
+                  <button
+                    onClick={() => setIsGalleryOpen(true)}
+                    className="flex items-center gap-4 text-[10px] uppercase tracking-[0.4em] font-bold group border border-white/20 px-6 py-3 hover:bg-white hover:text-black transition-all"
+                  >
+                    Δειτε τις Κουζινες <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </button>
+                  <div className="w-full h-px bg-white/5 my-4" />
+                  <span className="text-[10px] uppercase border border-white/20 px-4 py-2 rounded-full text-white/60">ΈπιπλοΣυνθέσεις</span>
+                  <span className="text-[10px] uppercase border border-white/20 px-4 py-2 rounded-full text-white/60">Σαλόνια Α' Ποιότητας</span>
                 </div>
               </FadeIn>
             </div>
@@ -301,9 +299,9 @@ export default function App() {
             <div className="lg:order-2">
               <FadeIn>
                 <div className="aspect-[4/5] overflow-hidden bg-[#111]">
-                  <img 
-                    src={IMAGES.wardrobe} 
-                    alt="Χειροποίητες Συρόμενες Ντουλάπες & Έπιπλα Υπνοδωματίου" 
+                  <img
+                    src={IMAGES.wardrobe}
+                    alt="Χειροποίητες Συρόμενες Ντουλάπες & Έπιπλα Υπνοδωματίου"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000 grayscale-[20%]"
                     referrerPolicy="no-referrer"
                   />
@@ -318,8 +316,8 @@ export default function App() {
                   Για να ξεκουράσουμε το χώρο σας, τον διάδρομο, το ελλειπτικό και το στατικό ποδήλατο. Πρακτικές και κομψές λύσεις εξοικονόμησης χώρου για το υπνοδωμάτιο σας.
                 </p>
                 <div className="flex gap-4 flex-wrap mb-10">
-                   <span className="text-[10px] uppercase border border-white/20 px-4 py-2 rounded-full text-white/60">Κρεβατοκάμαρες</span>
-                   <span className="text-[10px] uppercase border border-white/20 px-4 py-2 rounded-full text-white/60">Παιδικά Δωμάτια</span>
+                  <span className="text-[10px] uppercase border border-white/20 px-4 py-2 rounded-full text-white/60">Κρεβατοκάμαρες</span>
+                  <span className="text-[10px] uppercase border border-white/20 px-4 py-2 rounded-full text-white/60">Παιδικά Δωμάτια</span>
                 </div>
               </FadeIn>
             </div>
@@ -335,7 +333,7 @@ export default function App() {
               Ζουμε για να <span className="italic normal-case">Δημιουργούμε</span>
             </h2>
             <p className="text-lg text-white/50 font-light leading-relaxed max-w-2xl mx-auto mb-20 italic">
-              "Στόχος μας η ποιότητα και η αντοχή των κατασκευών μας στο χρόνο. <br/> Κύριο μέλημά μας, το χαμόγελό σας!"
+              "Στόχος μας η ποιότητα και η αντοχή των κατασκευών μας στο χρόνο. <br /> Κύριο μέλημά μας, το χαμόγελό σας!"
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               {[
@@ -351,21 +349,21 @@ export default function App() {
             </div>
           </FadeIn>
         </div>
-        
+
         {/* Decorative Gradient */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
       </section>
 
       {/* Community Section */}
       <section className="py-32 px-8 border-t border-white/5">
-         <div className="max-w-4xl mx-auto text-center">
-            <FadeIn>
-               <h3 className="text-2xl font-light mb-6 tracking-wider">Αγάπη για τον Τόπο μας</h3>
-               <p className="text-white/50 font-light leading-relaxed">
-                  Είμαστε ενεργά μέλη της κοινότητας του Ζευγολατιού. Με δράσεις που καλλωπίζουν το χωριό και με προσωπικές προσφορές του Σοφούλη Γιάννη και άλλων γνωστών συμπολιτών μας, αποδεικνύουμε καθημερινά την αγάπη μας για την έδρα του Δήμου μας.
-               </p>
-            </FadeIn>
-         </div>
+        <div className="max-w-4xl mx-auto text-center">
+          <FadeIn>
+            <h3 className="text-2xl font-light mb-6 tracking-wider">Αγάπη για τον Τόπο μας</h3>
+            <p className="text-white/50 font-light leading-relaxed">
+              Είμαστε ενεργά μέλη της κοινότητας του Ζευγολατιού. Με δράσεις που καλλωπίζουν το χωριό και με προσωπικές προσφορές του Σοφούλη Γιάννη και άλλων γνωστών συμπολιτών μας, αποδεικνύουμε καθημερινά την αγάπη μας για την έδρα του Δήμου μας.
+            </p>
+          </FadeIn>
+        </div>
       </section>
 
       {/* Contact - Clean & Minimal */}
@@ -395,7 +393,7 @@ export default function App() {
                     <div>
                       <div className="text-[9px] uppercase tracking-widest text-white/30 mb-1">Social Media</div>
                       <a href="https://www.facebook.com/profile.php?id=100091321404145" target="_blank" rel="noreferrer" className="text-sm font-light hover:underline text-blue-400">
-                         Βρείτε μας στο Facebook
+                        Βρείτε μας στο Facebook
                       </a>
                     </div>
                   </div>
@@ -405,11 +403,11 @@ export default function App() {
 
             <FadeIn delay={0.2}>
               <div className="space-y-12">
-                 <h3 className="text-2xl font-light mb-8">Για Πελάτες με Φαντασία & Άποψη!</h3>
-                 <p className="text-white/40 font-light leading-relaxed text-lg">
-                    Επικοινωνήστε μαζί μας για να συζητήσουμε τις ειδικές κατασκευές σας, είτε για το σπίτι, είτε για την επιχείρησή σας. Οι δημιουργίες μας απευθύνονται σε πελάτες με έντονο ταπεραμέντο και σε ανθρώπους που εκτιμούν την τέχνη του φυσικού ξύλου.
-                 </p>
-                <a href="https://www.facebook.com/profile.php?id=100091321404145" target="_blank" rel="noreferrer"  className="inline-block text-[10px] uppercase tracking-[0.5em] font-bold border border-white/20 px-12 py-5 hover:bg-white hover:text-black transition-all mt-8">
+                <h3 className="text-2xl font-light mb-8">Για Πελάτες με Φαντασία & Άποψη!</h3>
+                <p className="text-white/40 font-light leading-relaxed text-lg">
+                  Επικοινωνήστε μαζί μας για να συζητήσουμε τις ειδικές κατασκευές σας, είτε για το σπίτι, είτε για την επιχείρησή σας. Οι δημιουργίες μας απευθύνονται σε πελάτες με έντονο ταπεραμέντο και σε ανθρώπους που εκτιμούν την τέχνη του φυσικού ξύλου.
+                </p>
+                <a href="https://www.facebook.com/profile.php?id=100091321404145" target="_blank" rel="noreferrer" className="inline-block text-[10px] uppercase tracking-[0.5em] font-bold border border-white/20 px-12 py-5 hover:bg-white hover:text-black transition-all mt-8">
                   Στειλτε μας Μηνυμα
                 </a>
               </div>
