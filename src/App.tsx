@@ -276,10 +276,16 @@ export default function App() {
             <div className="max-w-md">
               <FadeIn delay={0.2}>
                 <span className="text-[10px] uppercase tracking-[0.4em] text-white/60 mb-6 block font-bold">01 / ΕΠΙΠΛΑ ΚΟΥΖΙΝΑΣ & ΣΑΛΟΝΙΟΥ</span>
+              </FadeIn>
+              <FadeIn delay={0.4}>
                 <h2 className="text-4xl font-light mb-8 leading-tight">Συνδυασμός <br />Ποιότητας & Τιμής</h2>
+              </FadeIn>
+              <FadeIn delay={0.6}>
                 <p className="text-white/40 font-light leading-relaxed mb-10 text-lg">
                   Χειροποίητες δημιουργίες από υλικά πρώτης ποιότητας, πάντα όμως ακολουθώντας την τάση της εποχής. Σας υποσχόμαστε ένα εξαιρετικό αποτέλεσμα με διαχρονικό και όμορφο στυλ!
                 </p>
+              </FadeIn>
+              <FadeIn delay={0.8}>
                 <div className="flex gap-4 flex-wrap mb-10">
                   <button
                     onClick={() => setIsGalleryOpen(true)}
@@ -311,10 +317,16 @@ export default function App() {
             <div className="max-w-md lg:ml-auto">
               <FadeIn delay={0.2}>
                 <span className="text-[10px] uppercase tracking-[0.4em] text-white/60 mb-6 block font-bold">02 / ΑΠΟΘΗΚΕΥΣΗ & ΥΠΝΟΔΩΜΑΤΙΟ</span>
+              </FadeIn>
+              <FadeIn delay={0.4}>
                 <h2 className="text-4xl font-light mb-8 leading-tight">Ντουλάπες <br />Συρόμενες</h2>
+              </FadeIn>
+              <FadeIn delay={0.6}>
                 <p className="text-white/40 font-light leading-relaxed mb-10 text-lg">
                   Για να ξεκουράσουμε το χώρο σας, τον διάδρομο, το ελλειπτικό και το στατικό ποδήλατο. Πρακτικές και κομψές λύσεις εξοικονόμησης χώρου για το υπνοδωμάτιο σας.
                 </p>
+              </FadeIn>
+              <FadeIn delay={0.8}>
                 <div className="flex gap-4 flex-wrap mb-10">
                   <span className="text-[10px] uppercase border border-white/20 px-4 py-2 rounded-full text-white/60">Κρεβατοκάμαρες</span>
                   <span className="text-[10px] uppercase border border-white/20 px-4 py-2 rounded-full text-white/60">Παιδικά Δωμάτια</span>
