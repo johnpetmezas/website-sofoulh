@@ -4,23 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ξυλουργείο Σοφούλης | Ξυλουργικές Εργασίες & Έπιπλα στο Ζευγολατιό</title>
-    <meta name="description" content="Ξυλουργείο Σοφούλης στο Ζευγολατιό Κορινθίας. Χειροποίητα έπιπλα, κουζίνες, ντουλάπες και ειδικές ξυλουργικές κατασκευές από το 1975. Ζητήστε προσφορά!" />
+    <meta name="description" content="Ξυλουργείο Σοφούλης στο Ζευγολατιό Κορινθίας. Ειδικευόμαστε σε χειροποίητα έπιπλα κουζίνας, συρόμενες ντουλάπες, πόρτες και ξυλουργικές εργασίες από το 1975. Ζητήστε δωρεάν προσφορά!" />
     
     <!-- Canonical Tag -->
     <link rel="canonical" href="https://website-sofoulh.vercel.app/" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://website-sofoulh.vercel.app/" />
-    <meta property="og:title" content="Ξυλουργείο Σοφούλης | Ξυλουργικές Εργασίες στο Ζευγολατιό" />
-    <meta property="og:description" content="Χειροποίητες δημιουργίες και έπιπλα υψηλής ποιότητας στο Ζευγολατιό Κορινθίας." />
+    <meta property="og:title" content="Ξυλουργείο Σοφούλης | Χειροποίητα Έπιπλα & Κουζίνες" />
+    <meta property="og:description" content="Ποιότητα και αντοχή στο χρόνο. Ξυλουργείο στο Ζευγολατιό Κορινθίας με εξειδίκευση σε ειδικές κατασκευές για το σπίτι και την επιχείρηση." />
     <meta property="og:image" content="https://website-sofoulh.vercel.app/kouzina%20hero.png" />
+    <meta property="og:site_name" content="Ξυλουργείο Σοφούλης" />
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Structured Data (JSON-LD) for Local Business -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "HomeAndConstructionBusiness",
+      "@id": "https://website-sofoulh.vercel.app/#business",
       "name": "Ξυλουργείο Σοφούλης",
       "url": "https://website-sofoulh.vercel.app",
       "telephone": "+30697059941",
@@ -32,23 +34,48 @@
         "postalCode": "20001",
         "addressCountry": "GR"
       },
-      "openingHours": "Mo-Fr 08:00-17:00",
-      "description": "Ξυλουργικές εργασίες, κατασκευή επίπλων, κουζίνες και ντουλάπες στο Ζευγολατιό Κορινθίας.",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 37.9357,
+        "longitude": 22.8028
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "14:00"
+        }
+      ],
+      "description": "Ξυλουργικές εργασίες, κατασκευή επίπλων, κουζίνες και ντουλάπες στο Ζευγολατιό Κορινθίας. Χειροποίητες δημιουργίες από το 1975.",
       "image": "https://website-sofoulh.vercel.app/kouzina%20hero.png",
-      "priceRange": "€€"
+      "priceRange": "€€",
+      "hasMap": "https://maps.google.com/maps?q=%CE%9D%CE%B9%CE%BA.%20%CE%A0%CE%BB%CE%B1%CF%83%CF%84%CE%AE%CF%81%CE%B1%205%2C%20%CE%96%CE%B5%CF%85%CE%B3%CE%BF%CE%BB%CE%B1%CF%84%CE%B5%CE%B9%CF%8C%20200%2001"
     }
     </script>
   </head>
   <body>
-    <div id="root">
-      <!-- Static Fallback for Crawlers -->
-      <div style="display:none">
+    <div id="root"></div>
+    <!-- Pre-rendering fallback for Search Engines -->
+    <noscript>
+      <main>
         <h1>Ξυλουργείο Σοφούλης - Ζευγολατιό</h1>
-        <h2>Ξυλουργικές Εργασίες, Χειροποίητα Έπιπλα, Κουζίνες & Ντουλάπες</h2>
-        <p>Η επιχείρησή μας δραστηριοποιείται στον χώρο από το 1975 στο Ζευγολατιό Κορινθίας. Προσφέρουμε ποιότητα και αντοχή στις κατασκευές μας.</p>
-        <p>Τηλέφωνο: 697059941 | Διεύθυνση: Νικ. Πλαστήρα 5, Ζευγολατειό</p>
-      </div>
-    </div>
+        <p>Ξυλουργικές Εργασίες, Χειροποίητα Έπιπλα, Κουζίνες & Ντουλάπες στο Ζευγολατιό Κορινθίας. Δραστηριοποιούμαστε στον χώρο από το 1975.</p>
+        <nav>
+          <ul>
+            <li><a href="#collections">Συλλογές</a></li>
+            <li><a href="#philosophy">Φιλοσοφία</a></li>
+            <li><a href="#contact">Επικοινωνία</a></li>
+          </ul>
+        </nav>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

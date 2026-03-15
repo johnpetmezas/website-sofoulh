@@ -20,6 +20,13 @@ const IMAGES = {
     "/kouz5.png",
     "/kouz6.png",
     "/kouz7.png",
+  ],
+  wardrobes: [
+    "/kom2.png",
+    "/kom3.png",
+    "/kom4.png",
+    "/kom5.png",
+    "/kom6.png"
   ]
 };
 
@@ -36,23 +43,23 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${scrolled ? 'bg-black/80 backdrop-blur-2xl py-6' : 'bg-transparent py-10'}`}>
       <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
-        <div className="flex items-center gap-12 mr-auto">
+        <div className="flex items-center gap-12 mr-auto -ml-8">
           <a
             href="tel:697059941"
-            className="text-white/40 hover:text-white transition-all duration-300 cursor-pointer p-2 -ml-2 rounded-full hover:bg-white/5 focus-visible:outline-white"
+            className="text-white/40 hover:text-white transition-all duration-300 cursor-pointer p-2 rounded-full hover:bg-white/5 focus-visible:outline-white"
             aria-label="Call us"
           >
             <Phone size={18} strokeWidth={1.5} />
           </a>
-          <a href="/" className="text-xl tracking-[0.4em] font-light uppercase hover:text-white transition-colors cursor-pointer focus-visible:outline-white">
-            ΣΟΦΟΥΛΗΣ
+          <a href="/" className="text-xl tracking-[0.4em] font-light hover:text-white transition-colors cursor-pointer focus-visible:outline-white">
+            Σοφούλης
           </a>
         </div>
 
-        <div className="hidden md:flex gap-12 text-[10px] uppercase tracking-[0.3em] font-medium text-white/40 mr-12">
-          <a href="#collections" className="hover:text-white transition-colors">Συλλογες</a>
-          <a href="#philosophy" className="hover:text-white transition-colors">Φιλοσοφια</a>
-          <a href="#contact" className="hover:text-white transition-colors">Επικοινωνια</a>
+        <div className="hidden md:flex gap-12 text-[10px] tracking-[0.3em] font-medium text-white/40 mr-12">
+          <a href="#collections" className="hover:text-white transition-colors">Συλλογές</a>
+          <a href="#philosophy" className="hover:text-white transition-colors">Φιλοσοφία</a>
+          <a href="#contact" className="hover:text-white transition-colors">Επικοινωνία</a>
         </div>
 
         <button className="text-white/60 hover:text-white transition-colors" onClick={() => setIsOpen(!isOpen)}>
@@ -80,6 +87,89 @@ const Navbar = () => {
         )}
       </AnimatePresence>
     </nav>
+  );
+};
+
+const PremiumButton = ({ text, onClick, href, icon: Icon, className }: any) => {
+  const Component = href ? motion.a : motion.button;
+  return (
+    <div className={`relative group ${className}`}>
+      {/* Outer Glow / Ambient Light */}
+      <div className="absolute -inset-[2px] bg-white/5 rounded-full blur-[4px] opacity-0 group-hover:opacity-100 transition duration-700" />
+      
+      <Component
+        href={href}
+        target={href?.startsWith('http') ? "_blank" : undefined}
+        rel={href?.startsWith('http') ? "noreferrer" : undefined}
+        onClick={onClick}
+        className="relative px-12 py-5 bg-black/80 rounded-full border border-white/20 overflow-hidden flex items-center justify-center gap-4 cursor-pointer focus:outline-none backdrop-blur-xl"
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        {/* Thick Glass Top Edge highlight */}
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent z-20" />
+        
+        {/* Internal Gradient / Lens effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 pointer-events-none" />
+        
+        {/* Central Glow behind text */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/3 h-1/2 bg-white/5 blur-xl group-hover:bg-white/10 transition-colors duration-500" />
+
+        {/* Animated Inner Shine */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"
+          animate={{ x: ['-200%', '200%'] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        />
+
+        {/* Floating Particles */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-[1.5px] h-[1.5px] bg-white rounded-full opacity-0 pointer-events-none"
+            animate={{
+              y: [20, -40],
+              opacity: [0, 0.4, 0],
+              x: i % 2 === 0 ? [0, 15, 0] : [0, -15, 0],
+              scale: [0, 1.2, 0]
+            }}
+            transition={{
+              duration: 3 + i,
+              repeat: Infinity,
+              delay: i * 0.5,
+              ease: "easeInOut"
+            }}
+            style={{
+              left: `${15 + i * 14}%`,
+              bottom: '0%'
+            }}
+          />
+        ))}
+
+        {/* Moving Nebula/Smoke inside */}
+        <motion.div
+          className="absolute -inset-10 bg-[radial-gradient(circle,rgba(255,255,255,0.08)_0%,transparent_70%)] blur-2xl pointer-events-none"
+          animate={{
+            x: [-30, 30, -30],
+            y: [-15, 15, -15],
+            opacity: [0.4, 0.7, 0.4],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+        />
+
+        <span className="relative z-10 text-lg md:text-xl font-bold text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] group-hover:drop-shadow-[0_0_20px_rgba(255,255,255,1)] transition-all duration-700 text-center tracking-tight">
+          {text}
+        </span>
+        
+        {Icon && (
+          <Icon 
+            size={20} 
+            className="relative z-10 text-white/80 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-700 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" 
+          />
+        )}
+      </Component>
+    </div>
   );
 };
 
@@ -173,15 +263,15 @@ const GalleryModal = ({ isOpen, onClose, images }: { isOpen: boolean, onClose: (
 };
 
 export default function App() {
-  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [activeGallery, setActiveGallery] = useState<string[] | null>(null);
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Navbar />
       <GalleryModal
-        isOpen={isGalleryOpen}
-        onClose={() => setIsGalleryOpen(false)}
-        images={IMAGES.gallery}
+        isOpen={!!activeGallery}
+        onClose={() => setActiveGallery(null)}
+        images={activeGallery || []}
       />
 
       {/* Hero - Minimalist & Smooth */}
@@ -206,15 +296,14 @@ export default function App() {
 
         <div className="relative z-10 text-center px-4 md:px-8">
           <FadeIn>
-            <span className="text-[10px] uppercase tracking-[0.6em] text-white/40 mb-8 block">
-              Ζευγολατιο, Κορινθιας • Απο το 1975
+            <span className="text-[10px] tracking-[0.6em] text-white/40 mb-8 block">
+              Ζευγολατιό, Κορινθίας • Από το 1975
             </span>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <h1 className="text-4xl md:text-[8rem] font-serif font-light tracking-tighter leading-none mb-8 md:mb-12 uppercase">
-              Ξυλουργείο <br /><span className="italic font-light normal-case">Σοφούλης</span>
+            <h1 className="text-4xl md:text-[8rem] font-serif font-light tracking-tighter leading-none mb-8 md:mb-12">
+              Ξυλουργείο <br /><span className="italic font-light">Σοφούλης</span>
             </h1>
-            <h2 className="sr-only">Ξυλουργικές Εργασίες & Χειροποίητα Έπιπλα στο Ζευγολατιό</h2>
           </FadeIn>
           <FadeIn delay={0.4}>
             <div className="flex justify-center flex-col items-center gap-8">
@@ -222,8 +311,8 @@ export default function App() {
                 Εκπληκτική δουλειά για απαιτητικούς πελάτες. Ειδικές κατασκευές για πελάτες με φαντασία και άποψη.
               </p>
               <button className="group flex flex-col items-center gap-4">
-                <span className="text-[10px] uppercase tracking-[0.4em] text-white/60 group-hover:text-white transition-colors">
-                  Ανακαλυψτε
+                <span className="text-[10px] tracking-[0.4em] text-white/60 group-hover:text-white transition-colors">
+                  Ανακαλύψτε
                 </span>
                 <div className="w-px h-16 bg-white/20 relative overflow-hidden">
                   <motion.div
@@ -258,7 +347,7 @@ export default function App() {
             <FadeIn>
               <div
                 className="aspect-[4/5] overflow-hidden bg-[#111] cursor-pointer group relative"
-                onClick={() => setIsGalleryOpen(true)}
+                onClick={() => setActiveGallery(IMAGES.gallery)}
               >
                 <img
                   src={IMAGES.kitchen}
@@ -269,17 +358,17 @@ export default function App() {
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                   <div className="flex flex-col items-center gap-4">
                     <Plus size={32} strokeWidth={1} className="text-white" />
-                    <span className="text-[10px] uppercase tracking-[0.4em]">Προβολη Gallery</span>
+                    <span className="text-[10px] tracking-[0.4em]">Προβολή Gallery</span>
                   </div>
                 </div>
               </div>
             </FadeIn>
             <div className="max-w-md">
               <FadeIn delay={0.2}>
-                <span className="text-[10px] uppercase tracking-[0.4em] text-white/60 mb-6 block font-bold">01 / ΕΠΙΠΛΑ ΚΟΥΖΙΝΑΣ & ΣΑΛΟΝΙΟΥ</span>
+                <span className="text-[10px] tracking-[0.4em] text-white/60 mb-6 block font-bold">01 / Έπιπλα Κουζίνας & Σαλονιού</span>
               </FadeIn>
               <FadeIn delay={0.4}>
-                <h2 className="text-4xl font-light mb-8 leading-tight">Συνδυασμός <br />Ποιότητας & Τιμής</h2>
+                <h3 className="text-4xl font-light mb-8 leading-tight">Σχεδιασμός Κουζίνας & Σαλονιού</h3>
               </FadeIn>
               <FadeIn delay={0.6}>
                 <p className="text-white/40 font-light leading-relaxed mb-10 text-xl">
@@ -288,15 +377,14 @@ export default function App() {
               </FadeIn>
               <FadeIn delay={0.8}>
                 <div className="flex gap-4 flex-wrap mb-10">
-                  <button
-                    onClick={() => setIsGalleryOpen(true)}
-                    className="flex items-center gap-4 text-[10px] uppercase tracking-[0.4em] font-bold group border border-white/20 px-6 py-3 hover:bg-white hover:text-black transition-all"
-                  >
-                    Δειτε τις Κουζινες <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  </button>
+                  <PremiumButton 
+                    text="Δείτε τις Κουζίνες"
+                    onClick={() => setActiveGallery(IMAGES.gallery)}
+                    icon={ArrowUpRight}
+                  />
                   <div className="w-full h-px bg-white/5 my-4" />
-                  <span className="text-[10px] uppercase border border-white/20 px-4 py-2 rounded-full text-white/60">ΈπιπλοΣυνθέσεις</span>
-                  <span className="text-[10px] uppercase border border-white/20 px-4 py-2 rounded-full text-white/60">Σαλόνια Α' Ποιότητας</span>
+                  <span className="text-[10px] border border-white/20 px-4 py-2 rounded-full text-white/60">ΈπιπλοΣυνθέσεις</span>
+                  <span className="text-[10px] border border-white/20 px-4 py-2 rounded-full text-white/60">Σαλόνια Α' Ποιότητας</span>
                 </div>
               </FadeIn>
             </div>
@@ -305,22 +393,31 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center flex-row-reverse">
             <div className="lg:order-2">
               <FadeIn>
-                <div className="aspect-[4/5] overflow-hidden bg-[#111]">
+                <div 
+                  className="aspect-[4/5] overflow-hidden bg-[#111] cursor-pointer group relative"
+                  onClick={() => setActiveGallery(IMAGES.wardrobes)}
+                >
                   <img
                     src={IMAGES.wardrobe}
-                    alt="Χειροποίητες Συρόμενες Ντουλάπες & Έπιπλα Υπνοδωματίου"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000 grayscale-[20%]"
+                    alt="Χειροποίητες Συρόμενες Ντουλάπες και Εσωτερικές Πόρτες - Ξυλουργείο Σοφούλης"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 grayscale-[20%]"
                     referrerPolicy="no-referrer"
                   />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                    <div className="flex flex-col items-center gap-4">
+                      <Plus size={32} strokeWidth={1} className="text-white" />
+                      <span className="text-[10px] tracking-[0.4em]">Προβολή Gallery</span>
+                    </div>
+                  </div>
                 </div>
               </FadeIn>
             </div>
             <div className="max-w-md lg:ml-auto">
               <FadeIn delay={0.2}>
-                <span className="text-[10px] uppercase tracking-[0.4em] text-white/60 mb-6 block font-bold">02 / ΑΠΟΘΗΚΕΥΣΗ & ΥΠΝΟΔΩΜΑΤΙΟ</span>
+                <span className="text-[10px] tracking-[0.4em] text-white/60 mb-6 block font-bold">02 / Αποθήκευση & Υπνοδωμάτιο</span>
               </FadeIn>
               <FadeIn delay={0.4}>
-                <h2 className="text-4xl font-light mb-8 leading-tight">Ντουλάπες <br />Συρόμενες</h2>
+                <h3 className="text-4xl font-light mb-8 leading-tight">Ντουλάπες Συρόμενες & Έπιπλα Υπνοδωματίου</h3>
               </FadeIn>
               <FadeIn delay={0.6}>
                 <p className="text-white/40 font-light leading-relaxed mb-10 text-xl">
@@ -329,8 +426,14 @@ export default function App() {
               </FadeIn>
               <FadeIn delay={0.8}>
                 <div className="flex gap-4 flex-wrap mb-10">
-                  <span className="text-[10px] uppercase border border-white/20 px-4 py-2 rounded-full text-white/60">Κρεβατοκάμαρες</span>
-                  <span className="text-[10px] uppercase border border-white/20 px-4 py-2 rounded-full text-white/60">Παιδικά Δωμάτια</span>
+                  <PremiumButton 
+                    text="Δείτε τις Ντουλάπες"
+                    onClick={() => setActiveGallery(IMAGES.wardrobes)}
+                    icon={ArrowUpRight}
+                  />
+                  <div className="w-full h-px bg-white/5 my-4" />
+                  <span className="text-[10px] border border-white/20 px-4 py-2 rounded-full text-white/60">Κρεβατοκάμαρες</span>
+                  <span className="text-[10px] border border-white/20 px-4 py-2 rounded-full text-white/60">Παιδικά Δωμάτια</span>
                 </div>
               </FadeIn>
             </div>
@@ -342,8 +445,8 @@ export default function App() {
       <section id="philosophy" className="py-24 md:py-40 bg-[#050505] relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-6 md:px-8 text-center relative z-10">
           <FadeIn>
-            <h2 className="text-3xl md:text-7xl font-extralight tracking-tighter mb-12 md:mb-16 uppercase">
-              Ζουμε για να <span className="italic normal-case">Δημιουργούμε</span>
+            <h2 className="text-3xl md:text-7xl font-extralight tracking-tighter mb-12 md:mb-16">
+              Ζούμε Για Να <span className="italic">Δημιουργούμε</span>
             </h2>
             <p className="text-lg text-white/50 font-light leading-relaxed max-w-2xl mx-auto mb-20 italic">
               "Στόχος μας η ποιότητα και η αντοχή των κατασκευών μας στο χρόνο. <br /> Κύριο μέλημά μας, το χαμόγελό σας!"
@@ -356,7 +459,7 @@ export default function App() {
               ].map((stat, i) => (
                 <div key={i} className="border-t border-white/10 pt-8">
                   <div className="text-2xl md:text-3xl font-light mb-2">{stat.value}</div>
-                  <div className="text-[10px] uppercase tracking-[0.4em] text-white/30">{stat.label}</div>
+                  <div className="text-[10px] tracking-[0.4em] text-white/30">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -385,26 +488,26 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32">
             <div>
               <FadeIn>
-                <h2 className="text-5xl font-light tracking-tighter mb-12 uppercase">Επικοινωνηστε <br />Μαζί Μας</h2>
+                <h2 className="text-5xl font-light tracking-tighter mb-12">Επικοινωνήστε <br />Μαζί Μας</h2>
                 <div className="space-y-10">
                   <div className="flex items-center gap-6">
                     <div className="w-px h-10 bg-white/40" />
                     <div>
-                      <div className="text-[9px] uppercase tracking-widest text-white/30 mb-1">Ξυλουργειο</div>
+                      <div className="text-[9px] tracking-widest text-white/30 mb-1">Ξυλουργείο</div>
                       <div className="text-sm font-light">Νικ. Πλαστήρα 5, Ζευγολατειό</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-6">
                     <div className="w-px h-10 bg-white/40" />
                     <div>
-                      <div className="text-[9px] uppercase tracking-widest text-white/30 mb-1">Πληροφοριες & Προσφορες</div>
+                      <div className="text-[9px] tracking-widest text-white/30 mb-1">Πληροφορίες & Προσφορές</div>
                       <div className="text-sm font-light">Σοφούλης Γιάννης • <a href="tel:697059941" className="hover:text-white transition-colors">697059941</a></div>
                     </div>
                   </div>
                   <div className="flex items-center gap-6">
                     <div className="w-px h-10 bg-white/40" />
                     <div>
-                      <div className="text-[9px] uppercase tracking-widest text-white/30 mb-1">Social Media</div>
+                      <div className="text-[9px] tracking-widest text-white/30 mb-1">Social Media</div>
                       <a href="https://www.facebook.com/profile.php?id=100091321404145" target="_blank" rel="noreferrer" className="text-sm font-light hover:underline text-blue-400">
                         Βρείτε μας στο Facebook
                       </a>
@@ -420,9 +523,11 @@ export default function App() {
                 <p className="text-white/40 font-light leading-relaxed text-xl">
                   Επικοινωνήστε μαζί μας για να συζητήσουμε τις ειδικές κατασκευές σας, είτε για το σπίτι, είτε για την επιχείρησή σας. Οι δημιουργίες μας απευθύνονται σε πελάτες με έντονο ταπεραμέντο και σε ανθρώπους που εκτιμούν την τέχνη του φυσικού ξύλου.
                 </p>
-                <a href="https://www.facebook.com/profile.php?id=100091321404145" target="_blank" rel="noreferrer" className="inline-block text-[10px] uppercase tracking-[0.5em] font-bold border border-white/20 px-12 py-5 hover:bg-white hover:text-black transition-all mt-8">
-                  Στειλτε μας Μηνυμα
-                </a>
+                <PremiumButton 
+                  href="https://www.facebook.com/profile.php?id=100091321404145"
+                  text="Στειλτε μας Μηνυμα"
+                  className="mt-8"
+                />
               </div>
             </FadeIn>
           </div>
@@ -449,13 +554,13 @@ export default function App() {
             <span className="text-sm tracking-[0.3em] font-light">ΣΟΦΟΥΛΗΣ ΓΙΑΝΝΗΣ</span>
             <span className="text-[10px] font-light text-white/30 tracking-wider">ΞΥΛΟΥΡΓΙΚΕΣ ΕΡΓΑΣΙΕΣ ΑΠΟ ΤΟ 1975</span>
           </div>
-          <div className="flex gap-12 text-[9px] uppercase tracking-[0.3em] text-white/30">
+          <div className="flex gap-12 text-[9px] tracking-[0.3em] text-white/30">
             <a href="https://www.facebook.com/profile.php?id=100091321404145" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Facebook</a>
             <span className="text-white/30">Giannis Chepeto</span>
             <span className="text-white/30">Μαρία Κωνσταντίνου Σοφούλη</span>
           </div>
-          <span className="text-[9px] uppercase tracking-[0.3em] text-white/20">
-            © 2026 Ολα τα δικαιωματα διατηρουνται
+          <span className="text-[9px] tracking-[0.3em] text-white/20">
+            © 2026 Όλα τα δικαιώματα διατηρούνται
           </span>
         </div>
       </footer>
