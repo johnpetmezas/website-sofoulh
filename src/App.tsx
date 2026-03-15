@@ -19,6 +19,8 @@ const IMAGES = {
     "/kouz4.png",
     "/kouz5.png",
     "/kouz6.png",
+    "/kouz7.png",
+    "/doul2.png",
   ]
 };
 
@@ -217,11 +219,11 @@ export default function App() {
           </FadeIn>
           <FadeIn delay={0.4}>
             <div className="flex justify-center flex-col items-center gap-8">
-              <p className="max-w-xl text-sm md:text-base font-light text-white/60 mb-4">
+              <p className="max-w-xl text-base md:text-lg font-light text-white/60 mb-4">
                 Εκπληκτική δουλειά για απαιτητικούς πελάτες. Ειδικές κατασκευές για πελάτες με φαντασία και άποψη.
               </p>
               <button className="group flex flex-col items-center gap-4">
-                <span className="text-[9px] uppercase tracking-[0.4em] text-white/60 group-hover:text-white transition-colors">
+                <span className="text-[10px] uppercase tracking-[0.4em] text-white/60 group-hover:text-white transition-colors">
                   Ανακαλυψτε
                 </span>
                 <div className="w-px h-16 bg-white/20 relative overflow-hidden">
@@ -246,7 +248,7 @@ export default function App() {
           <div className="text-center mb-32">
             <FadeIn>
               <h2 className="text-4xl md:text-6xl font-light mb-6 tracking-tighter">Οι Συλλογές μας</h2>
-              <p className="text-white/40 font-light max-w-2xl mx-auto">
+              <p className="text-white/40 font-light max-w-2xl mx-auto text-lg">
                 Αναλαμβάνουμε να 'ντύσουμε' το σπίτι σας με υλικά Α' ποιότητας. 
                 Έπιπλα Κουζίνας, Ντουλάπες, Πόρτες Εσωτερικού & Εξωτερικού Χώρου, Πέργολες, Σκεπές και Χαγιάτια.
               </p>
@@ -275,9 +277,9 @@ export default function App() {
             </FadeIn>
             <div className="max-w-md">
               <FadeIn delay={0.2}>
-                <span className="text-[9px] uppercase tracking-[0.4em] text-white/60 mb-6 block font-bold">01 / ΕΠΙΠΛΑ ΚΟΥΖΙΝΑΣ & ΣΑΛΟΝΙΟΥ</span>
+                <span className="text-[10px] uppercase tracking-[0.4em] text-white/60 mb-6 block font-bold">01 / ΕΠΙΠΛΑ ΚΟΥΖΙΝΑΣ & ΣΑΛΟΝΙΟΥ</span>
                 <h2 className="text-4xl font-light mb-8 leading-tight">Συνδυασμός <br />Ποιότητας & Τιμής</h2>
-                <p className="text-white/40 font-light leading-relaxed mb-10">
+                <p className="text-white/40 font-light leading-relaxed mb-10 text-lg">
                   Χειροποίητες δημιουργίες από υλικά πρώτης ποιότητας, πάντα όμως ακολουθώντας την τάση της εποχής. Σας υποσχόμαστε ένα εξαιρετικό αποτέλεσμα με διαχρονικό και όμορφο στυλ!
                 </p>
                 <div className="flex gap-4 flex-wrap mb-10">
@@ -310,9 +312,9 @@ export default function App() {
             </div>
             <div className="max-w-md lg:ml-auto">
               <FadeIn delay={0.2}>
-                <span className="text-[9px] uppercase tracking-[0.4em] text-white/60 mb-6 block font-bold">02 / ΑΠΟΘΗΚΕΥΣΗ & ΥΠΝΟΔΩΜΑΤΙΟ</span>
+                <span className="text-[10px] uppercase tracking-[0.4em] text-white/60 mb-6 block font-bold">02 / ΑΠΟΘΗΚΕΥΣΗ & ΥΠΝΟΔΩΜΑΤΙΟ</span>
                 <h2 className="text-4xl font-light mb-8 leading-tight">Ντουλάπες <br />Συρόμενες</h2>
-                <p className="text-white/40 font-light leading-relaxed mb-10">
+                <p className="text-white/40 font-light leading-relaxed mb-10 text-lg">
                   Για να ξεκουράσουμε το χώρο σας, τον διάδρομο, το ελλειπτικό και το στατικό ποδήλατο. Πρακτικές και κομψές λύσεις εξοικονόμησης χώρου για το υπνοδωμάτιο σας.
                 </p>
                 <div className="flex gap-4 flex-wrap mb-10">
@@ -343,7 +345,7 @@ export default function App() {
               ].map((stat, i) => (
                 <div key={i} className="border-t border-white/10 pt-8">
                   <div className="text-2xl md:text-3xl font-light mb-2">{stat.value}</div>
-                  <div className="text-[9px] uppercase tracking-[0.4em] text-white/30">{stat.label}</div>
+                  <div className="text-[10px] uppercase tracking-[0.4em] text-white/30">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -404,8 +406,8 @@ export default function App() {
             <FadeIn delay={0.2}>
               <div className="space-y-12">
                  <h3 className="text-2xl font-light mb-8">Για Πελάτες με Φαντασία & Άποψη!</h3>
-                 <p className="text-white/40 font-light leading-relaxed">
-                    Επικοινωνήστε μαζί μας για να συζητήσουμε τις ειδικές κατασκευές σας, είτε για το σπίτι, είτε για την επιχείρησή σας. Οι δημιουργίες μας απευθύνονται σε πελάτισσες με έντονο ταπεραμέντο και σε ανθρώπους που εκτιμούν την τέχνη του φυσικού ξύλου.
+                 <p className="text-white/40 font-light leading-relaxed text-lg">
+                    Επικοινωνήστε μαζί μας για να συζητήσουμε τις ειδικές κατασκευές σας, είτε για το σπίτι, είτε για την επιχείρησή σας. Οι δημιουργίες μας απευθύνονται σε πελάτες με έντονο ταπεραμέντο και σε ανθρώπους που εκτιμούν την τέχνη του φυσικού ξύλου.
                  </p>
                 <a href="https://www.facebook.com/profile.php?id=100091321404145" target="_blank" rel="noreferrer"  className="inline-block text-[10px] uppercase tracking-[0.5em] font-bold border border-white/20 px-12 py-5 hover:bg-white hover:text-black transition-all mt-8">
                   Στειλτε μας Μηνυμα
