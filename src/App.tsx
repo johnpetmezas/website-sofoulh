@@ -298,9 +298,9 @@ const GalleryModal = ({ isOpen, onClose, images }: { isOpen: boolean, onClose: (
                     }}
                     transition={{
                       type: "spring",
-                      stiffness: 120,
-                      damping: 25,
-                      mass: 1
+                      stiffness: 260,
+                      damping: 32,
+                      mass: 0.5
                     }}
                     className={`absolute w-[75%] md:w-[40%] lg:w-[32%] aspect-[3/4] md:aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-[#0a0a0a] ${isCenter ? 'shadow-[0_40px_100px_-15px_rgba(255,255,255,0.15)] md:shadow-[0_60px_120px_-20px_rgba(255,255,255,0.1)]' : 'shadow-2xl'}`}
                   >
@@ -342,7 +342,7 @@ const GalleryModal = ({ isOpen, onClose, images }: { isOpen: boolean, onClose: (
             {images.map((_, i) => (
               <div 
                 key={i}
-                className={`w-1 h-1 rounded-full transition-all duration-1000 ${i === currentIndex ? 'bg-white w-4' : 'bg-white/10'}`}
+                className={`w-1 h-1 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-white w-4' : 'bg-white/10'}`}
               />
             ))}
           </div>
@@ -589,10 +589,10 @@ export default function App() {
               <FadeIn delay={0.3}>
                 <div className="space-y-8">
                   <div className="inline-block px-4 py-1 border border-white/10 rounded-full text-[10px] tracking-[0.3em] text-white/40 uppercase mb-4">
-                    Crafting Excellence
+                    Δεξιοτεχνία & Ποιότητα
                   </div>
                   <p className="text-xl md:text-2xl text-white font-serif font-normal md:font-light leading-relaxed tracking-normal">
-                    Η επιχείρησή μας συνδυάζει την <span className="italic">πλούσια παράδοση</span> της ξυλουργικής με τη σύγχρονη αισθητική του design.
+                    Η επιχείρησή μας συνδυάζει την <span className="italic">πλούσια παράδοση</span> της ξυλουργικής με τη σύγχρονη αισθητική του σχεδιασμού.
                   </p>
                   <div className="w-full h-px bg-white/5" />
                   <p className="text-lg text-white/60 font-sans font-light leading-loose">
