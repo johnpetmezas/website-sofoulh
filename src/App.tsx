@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useMotionValue, useTransform } from 'motion/react';
 import {
   Menu, X, ChevronRight, ArrowRight,
   Plus, Minus, ArrowUpRight,
@@ -102,7 +102,7 @@ const PremiumButton = ({ text, onClick, href, icon: Icon, className }: any) => {
         target={href?.startsWith('http') ? "_blank" : undefined}
         rel={href?.startsWith('http') ? "noreferrer" : undefined}
         onClick={onClick}
-        className="relative px-12 py-5 bg-black/80 rounded-full border border-white/20 overflow-hidden flex items-center justify-center gap-4 cursor-pointer focus:outline-none backdrop-blur-xl"
+        className="relative px-6 py-4 md:px-12 md:py-5 bg-black/80 rounded-full border border-white/20 overflow-hidden flex items-center justify-center gap-4 cursor-pointer focus:outline-none backdrop-blur-xl"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
@@ -173,19 +173,87 @@ const PremiumButton = ({ text, onClick, href, icon: Icon, className }: any) => {
   );
 };
 
-const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) => (
+const BusinessCard = () => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const rotateX = useTransform(mouseY, [-300, 300], [15, -15]);
+  const rotateY = useTransform(mouseX, [-300, 300], [-15, 15]);
+
+  function onMouseMove(e: React.MouseEvent) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    mouseX.set(x);
+    mouseY.set(y);
+  }
+
+  function onMouseLeave() {
+    mouseX.set(0);
+    mouseY.set(0);
+  }
+
+  return (
+    <div className="relative group perspective-[1200px] w-full max-w-[500px] mx-auto">
+      <motion.div
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        className="relative w-full aspect-[1.58/1] rounded-[1.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.9)] overflow-hidden cursor-pointer"
+      >
+        {/* Real-time Glossy Light Reflection */}
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20"
+          style={{ transform: "translateZ(100px)" }}
+        />
+
+        {/* The Authentic Business Card Image */}
+        <div className="absolute inset-0" style={{ transform: "translateZ(50px)" }}>
+          <img 
+            src="/kartalast2-Photoroom.png" 
+            alt="Επαγγελματική Κάρτα Σοφούλης" 
+            className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+          />
+        </div>
+
+        {/* Backdrop Glow for depth */}
+        <div className="absolute -inset-4 bg-white/5 blur-[40px] rounded-full -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      </motion.div>
+    </div>
+  );
+};
+
+const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 1, delay, ease: [0.22, 1, 0.36, 1] }}
+    className={className}
   >
     {children}
   </motion.div>
 );
 
 const GalleryModal = ({ isOpen, onClose, images }: { isOpen: boolean, onClose: () => void, images: string[] }) => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (isOpen) {
+      setCurrentIndex(0);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
 
   return (
     <AnimatePresence>
@@ -194,68 +262,94 @@ const GalleryModal = ({ isOpen, onClose, images }: { isOpen: boolean, onClose: (
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-8 md:p-20 shadow-2xl"
+          className="fixed inset-0 z-[100] bg-black/98 backdrop-blur-2xl flex flex-col items-center justify-center shadow-2xl overflow-hidden"
         >
+          {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-8 right-8 text-white/40 hover:text-white transition-colors z-[110]"
+            className="absolute top-8 right-8 text-white/40 hover:text-white transition-all z-[110] p-2 hover:bg-white/5 rounded-full"
           >
-            <X size={40} strokeWidth={1} />
+            <X size={32} strokeWidth={1} />
           </button>
 
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="w-full max-w-6xl grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 overflow-y-auto max-h-full no-scrollbar pt-20 pb-10"
-          >
-            {images.map((src, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: idx * 0.05, type: "spring", damping: 20, stiffness: 300 }}
-                className="aspect-square overflow-hidden bg-white/5 group relative cursor-pointer"
-                onClick={() => setSelectedImage(src)}
-              >
-                <img
-                  src={src}
-                  alt={`Ξυλουργική κατασκευή Σοφούλης - Δημιουργία ${idx + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800";
-                  }}
-                />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 border border-white/10" />
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* Carousel Container */}
+          <div className="relative w-full max-w-7xl h-[45vh] md:h-[55vh] flex items-center justify-center">
+            {/* Ambient Background Glow behind center image */}
+            <div className="absolute w-[40%] aspect-[3/4] bg-white/5 blur-[120px] rounded-full pointer-events-none z-0" />
+            
+            <div className="relative w-full h-full flex items-center justify-center perspective-[2500px]">
+              {images.map((src, idx) => {
+                const isCenter = idx === currentIndex;
+                const isLeft = idx === (currentIndex - 1 + images.length) % images.length;
+                const isRight = idx === (currentIndex + 1) % images.length;
+                
+                if (!isCenter && !isLeft && !isRight) return null;
 
-          {/* Light-box for smooth pop-up of single photo */}
-          <AnimatePresence>
-            {selectedImage && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.5 }}
-                transition={{ type: "spring", damping: 30, stiffness: 200 }}
-                className="fixed inset-0 z-[120] bg-black/98 flex items-center justify-center p-4 md:p-20"
-                onClick={() => setSelectedImage(null)}
-              >
-                <div className="relative max-w-5xl max-h-full">
-                  <img
-                    src={selectedImage}
-                    alt="Enlarged"
-                    className="w-full h-full object-contain shadow-[0_0_100px_rgba(255,255,255,0.1)]"
-                  />
-                  <button className="absolute top-4 right-4 text-white/60 hover:text-white">
-                    <X size={32} />
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={false}
+                    animate={{
+                      x: isCenter ? 0 : isLeft ? '-75%' : '75%',
+                      scale: isCenter ? 1 : 0.75,
+                      opacity: isCenter ? 1 : 0.4,
+                      zIndex: isCenter ? 50 : 20,
+                      rotateY: isCenter ? 0 : isLeft ? 15 : -15,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 120,
+                      damping: 25,
+                      mass: 1
+                    }}
+                    className={`absolute w-[75%] md:w-[40%] lg:w-[32%] aspect-[3/4] md:aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-[#0a0a0a] ${isCenter ? 'shadow-[0_40px_100px_-15px_rgba(255,255,255,0.15)] md:shadow-[0_60px_120px_-20px_rgba(255,255,255,0.1)]' : 'shadow-2xl'}`}
+                  >
+                    <img
+                      src={src}
+                      alt={`Gallery work ${idx + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                    {!isCenter && (
+                      <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" />
+                    )}
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Navigation Controls - Matching the example photo style */}
+          <div className="flex items-center gap-6 mt-16">
+            <button
+              onClick={handlePrev}
+              className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/60 hover:bg-white/10 transition-all duration-500"
+              aria-label="Previous image"
+            >
+              <ArrowRight size={22} className="rotate-180" />
+            </button>
+            
+            <button
+              onClick={handleNext}
+              className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/60 hover:bg-white/10 transition-all duration-500"
+              aria-label="Next image"
+            >
+              <ArrowRight size={22} />
+            </button>
+          </div>
+
+          {/* Subtle Dots indicator */}
+          <div className="flex gap-2.5 mt-10">
+            {images.map((_, i) => (
+              <div 
+                key={i}
+                className={`w-1 h-1 rounded-full transition-all duration-1000 ${i === currentIndex ? 'bg-white w-4' : 'bg-white/10'}`}
+              />
+            ))}
+          </div>
+          {/* Counter Overlay */}
+          <div className="absolute bottom-12 text-white/20 text-[10px] tracking-[0.5em] font-medium uppercase">
+            {currentIndex + 1} &nbsp; / &nbsp; {images.length}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
@@ -342,59 +436,62 @@ export default function App() {
               </p>
             </FadeIn>
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center mb-32 md:mb-40">
-            <FadeIn>
-              <div
-                className="aspect-[4/5] overflow-hidden bg-[#111] cursor-pointer group relative"
-                onClick={() => setActiveGallery(IMAGES.gallery)}
-              >
-                <img
-                  src={IMAGES.kitchen}
-                  alt="Σχεδιασμός και Κατασκευή Κουζίνας - Ξυλουργείο Σοφούλης"
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale-[20%]"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                  <div className="flex flex-col items-center gap-4">
-                    <Plus size={32} strokeWidth={1} className="text-white" />
-                    <span className="text-[10px] tracking-[0.4em]">Προβολή Gallery</span>
+          <div className="flex flex-row flex-nowrap items-center gap-[15px] lg:gap-32 mb-32 md:mb-40">
+            <div className="w-1/2 relative group">
+              {/* Graphic Accent - Dark Gray #A9A9A9 (RGB: 169, 169, 169) */}
+              <div className="absolute -top-6 -left-6 w-full h-full bg-[#A9A9A9]/25 -z-10 rounded-[2.5rem]" />
+              <FadeIn className="h-full">
+                <div
+                  className="aspect-[4/5] overflow-hidden bg-[#111] cursor-pointer relative rounded-[2.5rem] shadow-2xl"
+                  onClick={() => setActiveGallery(IMAGES.gallery)}
+                >
+                  <img
+                    src={IMAGES.kitchen}
+                    alt="Σχεδιασμός και Κατασκευή Κουζίνας - Ξυλουργείο Σοφούλης"
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale-[20%]"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                    <div className="flex flex-col items-center gap-4">
+                      <Plus size={32} strokeWidth={1} className="text-white" />
+                      <span className="text-[10px] tracking-[0.4em]">Προβολή Gallery</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </FadeIn>
-            <div className="max-w-md">
+              </FadeIn>
+            </div>
+            <div className="w-1/2 flex flex-col justify-center">
               <FadeIn delay={0.2}>
-                <span className="text-[10px] tracking-[0.4em] text-white/60 mb-6 block font-bold">01 / Έπιπλα Κουζίνας & Σαλονιού</span>
+                <span className="text-[8px] md:text-[10px] tracking-[0.4em] text-white/60 mb-4 md:mb-6 block font-bold">01 / Έπιπλα Κουζίνας</span>
               </FadeIn>
               <FadeIn delay={0.4}>
-                <h3 className="text-4xl font-light mb-8 leading-tight">Σχεδιασμός Κουζίνας & Σαλονιού</h3>
+                <h3 className="text-xl md:text-4xl font-light mb-4 md:mb-8 leading-tight">Σχεδιασμός Κουζίνας & Σαλονιού</h3>
               </FadeIn>
               <FadeIn delay={0.6}>
-                <p className="text-white/40 font-light leading-relaxed mb-10 text-xl">
-                  Χειροποίητες δημιουργίες από υλικά πρώτης ποιότητας, πάντα όμως ακολουθώντας την τάση της εποχής. Σας υποσχόμαστε ένα εξαιρετικό αποτέλεσμα με διαχρονικό και όμορφο στυλ!
+                <p className="text-xs md:text-xl text-white/40 font-light leading-relaxed mb-6 md:mb-10 line-clamp-4 md:line-clamp-none">
+                  Χειροποίητες δημιουργίες από υλικά πρώτης ποιότητας, πάντα όμως ακολουθώντας την τάση της εποχής.
                 </p>
               </FadeIn>
               <FadeIn delay={0.8}>
-                <div className="flex gap-4 flex-wrap mb-10">
+                <div className="flex gap-2 md:gap-4 flex-wrap">
                   <PremiumButton 
                     text="Δείτε τις Κουζίνες"
                     onClick={() => setActiveGallery(IMAGES.gallery)}
                     icon={ArrowUpRight}
+                    className="scale-75 md:scale-100 origin-left"
                   />
-                  <div className="w-full h-px bg-white/5 my-4" />
-                  <span className="text-[10px] border border-white/20 px-4 py-2 rounded-full text-white/60">ΈπιπλοΣυνθέσεις</span>
-                  <span className="text-[10px] border border-white/20 px-4 py-2 rounded-full text-white/60">Σαλόνια Α' Ποιότητας</span>
                 </div>
               </FadeIn>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center flex-row-reverse">
-            <div className="lg:order-2">
-              <FadeIn>
+          <div className="flex flex-row-reverse flex-nowrap items-center gap-[15px] lg:gap-32">
+            <div className="w-1/2 relative group">
+              {/* Graphic Accent - Dark Gray #A9A9A9 (RGB: 169, 169, 169) */}
+              <div className="absolute -top-6 -right-6 w-full h-full bg-[#A9A9A9]/25 -z-10 rounded-[2.5rem]" />
+              <FadeIn className="h-full">
                 <div 
-                  className="aspect-[4/5] overflow-hidden bg-[#111] cursor-pointer group relative"
+                  className="aspect-[4/5] overflow-hidden bg-[#111] cursor-pointer relative rounded-[2.5rem] shadow-2xl"
                   onClick={() => setActiveGallery(IMAGES.wardrobes)}
                 >
                   <img
@@ -412,28 +509,26 @@ export default function App() {
                 </div>
               </FadeIn>
             </div>
-            <div className="max-w-md lg:ml-auto">
+            <div className="w-1/2 flex flex-col justify-center text-right lg:text-left">
               <FadeIn delay={0.2}>
-                <span className="text-[10px] tracking-[0.4em] text-white/60 mb-6 block font-bold">02 / Αποθήκευση & Υπνοδωμάτιο</span>
+                <span className="text-[8px] md:text-[10px] tracking-[0.4em] text-white/60 mb-4 md:mb-6 block font-bold">02 / Ντουλάπες</span>
               </FadeIn>
               <FadeIn delay={0.4}>
-                <h3 className="text-4xl font-light mb-8 leading-tight">Ντουλάπες Συρόμενες & Έπιπλα Υπνοδωματίου</h3>
+                <h3 className="text-xl md:text-4xl font-light mb-4 md:mb-8 leading-tight">Ντουλάπες Συρόμενες</h3>
               </FadeIn>
               <FadeIn delay={0.6}>
-                <p className="text-white/40 font-light leading-relaxed mb-10 text-xl">
-                  Για να ξεκουράσουμε το χώρο σας, τον διάδρομο, το ελλειπτικό και το στατικό ποδήλατο. Πρακτικές και κομψές λύσεις εξοικονόμησης χώρου για το υπνοδωμάτιο σας.
+                <p className="text-xs md:text-xl text-white/40 font-light leading-relaxed mb-6 md:mb-10 line-clamp-4 md:line-clamp-none">
+                  Πρακτικές και κομψές λύσεις εξοικονόμησης χώρου για το υπνοδωμάτιο σας.
                 </p>
               </FadeIn>
               <FadeIn delay={0.8}>
-                <div className="flex gap-4 flex-wrap mb-10">
+                <div className="flex gap-2 md:gap-4 flex-wrap justify-end lg:justify-start">
                   <PremiumButton 
                     text="Δείτε τις Ντουλάπες"
                     onClick={() => setActiveGallery(IMAGES.wardrobes)}
                     icon={ArrowUpRight}
+                    className="scale-75 md:scale-100 origin-right lg:origin-left"
                   />
-                  <div className="w-full h-px bg-white/5 my-4" />
-                  <span className="text-[10px] border border-white/20 px-4 py-2 rounded-full text-white/60">Κρεβατοκάμαρες</span>
-                  <span className="text-[10px] border border-white/20 px-4 py-2 rounded-full text-white/60">Παιδικά Δωμάτια</span>
                 </div>
               </FadeIn>
             </div>
@@ -470,15 +565,53 @@ export default function App() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
       </section>
 
-      {/* Community Section */}
-      <section className="py-32 px-8 border-t border-white/5">
-        <div className="max-w-4xl mx-auto text-center">
-          <FadeIn>
-            <h3 className="text-2xl font-light mb-6 tracking-wider">Αγάπη για τον Τόπο μας</h3>
-            <p className="text-white/50 font-light leading-relaxed">
-              Είμαστε ενεργά μέλη της κοινότητας του Ζευγολατιού. Με δράσεις που καλλωπίζουν το χωριό και με προσωπικές προσφορές του Σοφούλη Γιάννη και άλλων γνωστών συμπολιτών μας, αποδεικνύουμε καθημερινά την αγάπη μας για την έδρα του Δήμου μας.
-            </p>
-          </FadeIn>
+      {/* Professional Identity Section - High-end Split Layout */}
+      <section className="py-24 md:py-40 px-6 md:px-8 bg-black relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
+            
+            {/* Left Column: Interactive 3D Card UI */}
+            <div className="order-1">
+              <FadeIn>
+                <div className="mb-12">
+                  <h2 className="text-3xl md:text-5xl font-serif font-light tracking-tight text-white mb-4">
+                    Η Επαγγελματική μας Κάρτα
+                  </h2>
+                  <div className="w-20 h-px bg-white/20" />
+                </div>
+                
+                <BusinessCard />
+              </FadeIn>
+            </div>
+
+            {/* Right Column: Narrative */}
+            <div className="order-2 lg:pl-12">
+              <FadeIn delay={0.3}>
+                <div className="space-y-8">
+                  <div className="inline-block px-4 py-1 border border-white/10 rounded-full text-[10px] tracking-[0.3em] text-white/40 uppercase mb-4">
+                    Crafting Excellence
+                  </div>
+                  <p className="text-xl md:text-2xl text-white font-serif font-light leading-relaxed">
+                    Η επιχείρησή μας συνδυάζει την <span className="italic">πλούσια παράδοση</span> της ξυλουργικής με τη σύγχρονη αισθητική του design.
+                  </p>
+                  <div className="w-full h-px bg-white/5" />
+                  <p className="text-lg text-white/60 font-sans font-light leading-loose">
+                    Με έδρα το Ζευγολατιό, δημιουργούμε εξατομικευμένες κατασκευές που είναι φτιαγμένες για να αντέχουν, 
+                    δίνοντας έμφαση στην ακρίβεια, τη δεξιοτεχνία και την προσωπική εξυπηρέτηση. Κάθε κομμάτι που 
+                    βγαίνει από το εργαστήριό μας αφηγείται μια ιστορία ποιότητας και φροντίδας.
+                  </p>
+                  <div className="pt-8">
+                    <PremiumButton 
+                      href="#contact"
+                      text="Συζητήστε το Project σας"
+                      icon={ArrowUpRight}
+                    />
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+
+          </div>
         </div>
       </section>
 
