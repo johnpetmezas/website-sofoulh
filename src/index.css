@@ -48,9 +48,16 @@ body {
 
 /* Typography refinements */
 h1, h2, h3 {
-  @apply tracking-tight font-light;
+  @apply font-light;
+  letter-spacing: -0.01em;
 }
 
-.tracking-ultra {
-  letter-spacing: 0.5em;
+p {
+  letter-spacing: normal;
+}
+
+@media (max-width: 768px) {
+  h1, h2, h3, p {
+    letter-spacing: normal !important;
+  }
 }

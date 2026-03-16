@@ -388,21 +388,21 @@ export default function App() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" />
         </motion.div>
 
-        <div className="relative z-10 text-center px-4 md:px-8">
+        <div className="relative z-10 text-center px-6 md:px-8">
           <FadeIn>
-            <span className="text-[10px] tracking-[0.6em] text-white/40 mb-8 block">
+            <span className="text-[9px] md:text-[11px] tracking-[0.4em] text-white/40 mb-10 md:mb-12 block">
               Ζευγολατιό, Κορινθίας • Από το 1975
             </span>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <h1 className="text-4xl md:text-[8rem] font-serif font-light tracking-tighter leading-none mb-8 md:mb-12">
-              Ξυλουργείο <br /><span className="italic font-light">Σοφούλης</span>
+            <h1 className="text-5xl md:text-[8rem] font-serif font-bold md:font-light tracking-tight md:tracking-tighter leading-[1.1] md:leading-none mb-10 md:mb-16">
+              Ξυλουργείο <br /><span className="italic font-medium md:font-light">Σοφούλης</span>
             </h1>
           </FadeIn>
           <FadeIn delay={0.4}>
-            <div className="flex justify-center flex-col items-center gap-8">
-              <p className="max-w-xl text-lg md:text-xl font-light text-white/60 mb-4">
-                Εκπληκτική δουλειά για απαιτητικούς πελάτες. Ειδικές κατασκευές για πελάτες με φαντασία και άποψη.
+            <div className="flex justify-center flex-col items-center gap-12">
+              <p className="max-w-xl text-base md:text-xl font-light text-white/50 leading-relaxed mb-6">
+                Εκπληκτική δουλειά για απαιτητικούς πελάτες. <br className="hidden md:block" /> Ειδικές κατασκευές για πελάτες με φαντασία και άποψη.
               </p>
               <button className="group flex flex-col items-center gap-4">
                 <span className="text-[10px] tracking-[0.4em] text-white/60 group-hover:text-white transition-colors">
@@ -591,7 +591,7 @@ export default function App() {
                   <div className="inline-block px-4 py-1 border border-white/10 rounded-full text-[10px] tracking-[0.3em] text-white/40 uppercase mb-4">
                     Crafting Excellence
                   </div>
-                  <p className="text-xl md:text-2xl text-white font-serif font-light leading-relaxed">
+                  <p className="text-xl md:text-2xl text-white font-serif font-normal md:font-light leading-relaxed tracking-normal">
                     Η επιχείρησή μας συνδυάζει την <span className="italic">πλούσια παράδοση</span> της ξυλουργικής με τη σύγχρονη αισθητική του design.
                   </p>
                   <div className="w-full h-px bg-white/5" />
